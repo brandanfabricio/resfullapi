@@ -14,7 +14,8 @@ const {HomeController} = require('../controllers')
 // rutas
 const {HomeRoutes} = require('../routes/index.routes');
 const Rutas =  require('../routes')
-
+//modelos de mongoose 
+const {Comentario,Ideas,Usuario} = require('../models');
 
 const contenedor = createContainer();
 
@@ -32,6 +33,11 @@ contenedor
 })
 .register({
     HomeRoutes: asFunction(HomeRoutes).singleton()
+})
+.register({
+    Usuario: asValue(Usuario),
+    Comentario: asValue(Comentario),
+    Ideas: asValue(Ideas)
 })
 
 module.exports = contenedor;
