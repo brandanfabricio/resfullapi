@@ -17,6 +17,9 @@ const Rutas =  require('../routes')
 //modelos de mongoose 
 const {Comentario,Ideas,Usuario} = require('../models');
 
+// Repositorios 
+const {ComentarioRepositorio,IdeasRepositorio,UsusarioRepositorio } = require('../repositories')
+
 const contenedor = createContainer();
 
 contenedor
@@ -38,6 +41,11 @@ contenedor
     Usuario: asValue(Usuario),
     Comentario: asValue(Comentario),
     Ideas: asValue(Ideas)
+})
+.register({
+    UsuarioRepositorio : assClass(UsuarioRepositorio).singleton(),
+    ComentarioRepositorio : assClass(ComentarioRepositorio).singleton(),
+     IdeasRepositorio : assClass(IdeasRepositorio).singleton()
 })
 
 module.exports = contenedor;
